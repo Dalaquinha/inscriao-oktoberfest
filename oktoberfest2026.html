@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oktoberfest Blumenau 2026 — Inscrição de Banca</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,900&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --stucco:#F1E3C2;
+    --stucco-dark:#E4D0A0;
+    --timber:#34210F;
+    --timber-soft:#5A3D26;
+    --blue:#24418C;
+    --blue-pale:#7FA0D6;
+    --geranium:#B23A22;
+    --gold:#D69A1E;
+    --gold-dark:#B47D0F;
+    --hop:#4C6B3A;
+    --paper:#FBF6E9;
+    --radius:12px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--stucco);
+    color:var(--timber);
+    font-family:'Work Sans', sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:'Fraunces', serif; font-weight:700; letter-spacing:-0.01em; margin:0;}
+  p{margin:0;}
+  a{color:inherit;}
+
+  /* ---------- Fachwerk (half-timber) signature texture ---------- */
+  .fachwerk{
+    height:44px;
+    width:100%;
+    background-color:var(--stucco-dark);
+    background-image:
+      repeating-linear-gradient(45deg, var(--timber) 0 9px, transparent 9px 84px),
+      repeating-linear-gradient(-45deg, var(--timber) 0 9px, transparent 9px 84px);
+  }
+  .fachwerk.thin{height:20px;}
+
+  .corner-brace{position:relative;}
+  .corner-brace::before{
+    content:"";
+    position:absolute; top:0; left:0; width:26px; height:26px;
+    background:
+      linear-gradient(45deg, transparent 48%, var(--timber) 48% 52%, transparent 52%);
+    opacity:0.7;
+    pointer-events:none;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding:64px 20px 56px;
+    text-align:center;
+    max-width:760px;
+    margin:0 auto;
+  }
+  .eyebrow{
+    font-size:12.5px;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    font-weight:700;
+    color:var(--blue);
+    margin-bottom:18px;
+    opacity:0;
+    animation:riseIn .7s ease .05s forwards;
+  }
+  .hero-word{
+    font-family:'Fraunces', serif;
+    font-weight:900;
+    font-size:clamp(52px, 11vw, 108px);
+    line-height:0.92;
+    letter-spacing:-0.01em;
+    color:var(--timber);
+    text-shadow:4px 4px 0 rgba(178,58,34,0.22);
+    margin:0;
+    opacity:0;
+    animation:riseIn .8s ease .15s forwards;
+  }
+  .hero-year{
+    font-size:clamp(20px,3vw,28px);
+    letter-spacing:0.35em;
+    color:var(--blue);
+    font-weight:700;
+    margin-top:6px;
+    opacity:0;
+    animation:riseIn .8s ease .3s forwards;
+  }
+  .hero-tagline{
+    margin:26px auto 0;
+    max-width:520px;
+    font-size:16.5px;
+    color:var(--timber-soft);
+    opacity:0;
+    animation:riseIn .8s ease .45s forwards;
+  }
+  .hero-cta{
+    display:inline-block;
+    margin-top:30px;
+    padding:15px 34px;
+    background:var(--gold);
+    color:var(--timber);
+    font-family:'Fraunces',serif;
+    font-weight:700;
+    font-size:16.5px;
+    text-decoration:none;
+    border-radius:999px;
+    box-shadow:0 5px 0 var(--gold-dark);
+    transition:transform .12s ease, box-shadow .12s ease;
+    opacity:0;
+    animation:riseIn .8s ease .6s forwards;
+  }
+  .hero-cta:hover{transform:translateY(-2px); box-shadow:0 7px 0 var(--gold-dark);}
+  .hero-cta:active{transform:translateY(3px); box-shadow:0 1px 0 var(--gold-dark);}
+
+  @keyframes riseIn{
+    from{opacity:0; transform:translateY(14px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .eyebrow,.hero-word,.hero-year,.hero-tagline,.hero-cta{animation:none; opacity:1;}
+  }
+
+  .beer-illustration{
+    width:150px; height:auto; margin:34px auto 0; display:block;
+    opacity:0; animation:riseIn .8s ease .7s forwards;
+  }
+
+  .hop-divider{
+    display:flex; align-items:center; justify-content:center; gap:10px;
+    margin:38px 0 0; opacity:0.65;
+  }
+  .hop-divider span{width:44px; height:1.5px; background:var(--timber-soft);}
+  .hop-divider svg{width:20px; height:20px; fill:var(--hop);}
+
+  /* ---------- Info strip ---------- */
+  .info-strip{
+    max-width:1040px;
+    margin:56px auto 0;
+    padding:0 20px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+  }
+  @media (max-width:760px){ .info-strip{grid-template-columns:1fr;} }
+  .info-card{
+    background:var(--paper);
+    border:1px solid #D9C48C;
+    border-radius:var(--radius);
+    padding:22px 22px 24px;
+  }
+  .info-card h3{
+    font-size:18px;
+    color:var(--blue);
+    margin-bottom:10px;
+  }
+  .info-card ul{margin:0; padding-left:18px; font-size:13.8px; color:var(--timber-soft);}
+  .info-card li{margin-bottom:5px;}
+
+  /* ---------- Form section ---------- */
+  .form-section{
+    max-width:720px;
+    margin:70px auto 0;
+    padding:0 20px 90px;
+  }
+  .form-heading{text-align:center; margin-bottom:34px;}
+  .form-heading h2{font-size:clamp(26px,4vw,34px); color:var(--timber);}
+  .form-heading p{margin-top:10px; color:var(--timber-soft); font-size:14.5px;}
+
+  .ticket{
+    background:var(--paper);
+    border-radius:var(--radius);
+    box-shadow:0 2px 0 var(--stucco-dark), 0 10px 24px -14px rgba(52,33,15,0.35);
+    margin-bottom:20px;
+    overflow:hidden;
+    border:1px solid #D9C48C;
+  }
+  .ticket-head{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:13px 20px;
+    background:var(--stucco-dark);
+    border-bottom:2px dashed #C2A968;
+  }
+  .ticket-head .kicker{
+    font-size:11px; letter-spacing:0.14em; text-transform:uppercase;
+    font-weight:700; color:var(--timber-soft);
+  }
+  .ticket-head .stub{
+    font-family:'Fraunces',serif; font-weight:600; font-size:13px; color:var(--gold-dark);
+  }
+  .ticket-body{padding:20px 22px 24px;}
+
+  label{
+    display:block; font-size:13px; font-weight:600; color:var(--timber-soft);
+    margin:14px 0 5px;
+  }
+  label .req{color:var(--geranium); margin-left:2px;}
+  label:first-child{margin-top:0;}
+
+  input[type=text], input[type=tel], input[type=date], textarea{
+    width:100%; padding:10px 12px;
+    border:1.5px solid #D9C48C; border-radius:8px;
+    font-family:'Work Sans',sans-serif; font-size:14.5px; color:var(--timber);
+    background:#FEFBF2;
+  }
+  input:focus, textarea:focus{outline:none; border-color:var(--blue); background:#fff;}
+  textarea{min-height:84px; resize:vertical;}
+
+  .row2{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+  .row3{display:grid; grid-template-columns:2fr 1fr 1fr; gap:14px;}
+  @media (max-width:520px){ .row2,.row3{grid-template-columns:1fr;} }
+
+  .radio-group{display:flex; gap:14px; margin-top:6px; flex-wrap:wrap;}
+  .radio-card{
+    flex:1; min-width:190px;
+    border:1.5px solid #D9C48C; border-radius:8px; padding:12px 14px;
+    cursor:pointer; display:flex; gap:10px; align-items:flex-start;
+    background:#FEFBF2;
+  }
+  .radio-card.checked{border-color:var(--hop); background:#EEF2E9;}
+  .radio-card input{width:auto; margin-top:3px;}
+  .radio-card span{font-size:13.5px;}
+
+  .check-row{
+    display:flex; gap:12px; align-items:flex-start;
+    margin-top:18px; font-size:13.5px; color:var(--timber-soft);
+    background:#FEFBF2; border:1.5px solid #D9C48C; border-radius:8px;
+    padding:14px 16px;
+  }
+  .check-row input{
+    width:24px; height:24px; min-width:24px;
+    margin-top:1px; accent-color:var(--hop); cursor:pointer;
+  }
+  .check-row label{cursor:pointer;}
+
+  .submit-btn{
+    margin-top:22px; width:100%; padding:15px; border:none; border-radius:10px;
+    background:var(--gold); color:var(--timber);
+    font-family:'Fraunces',serif; font-weight:700; font-size:16.5px;
+    cursor:pointer; box-shadow:0 4px 0 var(--gold-dark);
+    transition:transform .1s ease;
+  }
+  .submit-btn:active{transform:translateY(3px); box-shadow:0 1px 0 var(--gold-dark);}
+  .submit-btn:disabled{opacity:0.6; cursor:not-allowed;}
+
+  .msg{margin-top:14px; padding:12px 14px; border-radius:8px; font-size:13.5px; display:none;}
+  .msg.ok{background:#EAF1E5; color:var(--hop); border:1px solid #C6D9BB;}
+  .msg.err{background:#F7E4DC; color:var(--geranium); border:1px solid #E4B5A2;}
+
+  footer{
+    text-align:center; padding:30px 20px 40px;
+    color:var(--timber-soft); font-size:13px;
+  }
+  footer strong{color:var(--timber);}
+
+  .reg-section{max-width:1040px; margin:56px auto 0; padding:0 20px;}
+
+  /* scroll reveal */
+  .reveal{opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<div class="fachwerk"></div>
+
+<section class="hero">
+  <div class="eyebrow">Feira Livre · Blumenau, SC</div>
+  <h1 class="hero-word">Oktoberfest</h1>
+  <div class="hero-year">2 0 2 6</div>
+  <p class="hero-tagline">A maior festa alemã do Brasil está de volta — e sua banca pode fazer parte dela. Preencha a ficha abaixo para se candidatar a um espaço na feira.</p>
+  <a href="#inscricao" class="hero-cta">Fazer minha inscrição ↓</a>
+
+  <svg class="beer-illustration" viewBox="0 0 220 140" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <g transform="translate(20,10) rotate(-8 60 90)">
+      <rect x="20" y="30" width="60" height="80" rx="8" fill="#FEFBF2" stroke="var(--timber)" stroke-width="3"/>
+      <rect x="24" y="46" width="52" height="60" fill="var(--gold)"/>
+      <path d="M74 46 Q98 50 96 72 Q94 90 74 88" fill="none" stroke="var(--timber)" stroke-width="3"/>
+      <path d="M18 44 Q50 28 82 44 Q84 56 70 58 Q50 46 30 58 Q16 56 18 44 Z" fill="#FEFBF2" stroke="var(--timber)" stroke-width="2.5"/>
+      <circle cx="30" cy="40" r="3" fill="#FEFBF2" stroke="var(--timber)" stroke-width="1.5"/>
+      <circle cx="46" cy="36" r="3.5" fill="#FEFBF2" stroke="var(--timber)" stroke-width="1.5"/>
+      <circle cx="62" cy="40" r="3" fill="#FEFBF2" stroke="var(--timber)" stroke-width="1.5"/>
+    </g>
+    <g transform="translate(120,10) rotate(8 60 90)">
+      <rect x="20" y="30" width="60" height="80" rx="8" fill="#FEFBF2" stroke="var(--timber)" stroke-width="3"/>
+      <rect x="24" y="46" width="52" height="60" fill="var(--gold)"/>
+      <path d="M26 46 Q2 50 4 72 Q6 90 26 88" fill="none" stroke="var(--timber)" stroke-width="3"/>
+      <path d="M18 44 Q50 28 82 44 Q84 56 70 58 Q50 46 30 58 Q16 56 18 44 Z" fill="#FEFBF2" stroke="var(--timber)" stroke-width="2.5"/>
+      <circle cx="38" cy="40" r="3" fill="#FEFBF2" stroke="var(--timber)" stroke-width="1.5"/>
+      <circle cx="54" cy="36" r="3.5" fill="#FEFBF2" stroke="var(--timber)" stroke-width="1.5"/>
+      <circle cx="70" cy="40" r="3" fill="#FEFBF2" stroke="var(--timber)" stroke-width="1.5"/>
+    </g>
+    <g fill="var(--gold-dark)">
+      <path d="M108 34 l3 8 8 3 -8 3 -3 8 -3-8 -8-3 8-3z"/>
+      <circle cx="90" cy="20" r="2.5"/>
+      <circle cx="130" cy="18" r="2"/>
+    </g>
+  </svg>
+
+  <div class="hop-divider">
+    <span></span>
+    <svg viewBox="0 0 24 24"><path d="M12 2C9 2 7 5 7 8c0 4 2 6 5 6s5-2 5-6c0-3-2-6-5-6zm0 12c-2 0-3.5 1.5-3.5 3.5S10 21 12 21s3.5-1.5 3.5-3.5S14 14 12 14z"/></svg>
+    <span></span>
+  </div>
+</section>
+
+<div style="max-width:720px;margin:0 auto 40px;padding:0 20px;">
+  <div class="reveal" style="background:#F7E9DD;border:1.5px solid var(--geranium);border-radius:var(--radius);padding:16px 20px;font-size:13.8px;color:var(--timber-soft);">
+    <strong style="color:var(--geranium);">Atenção:</strong> preencher esta ficha é uma candidatura, não uma reserva automática. Todas as inscrições serão avaliadas pela organização, que entrará em contato com os selecionados para confirmar a banca.
+  </div>
+</div>
+
+<div class="info-strip">
+  <div class="info-card corner-brace reveal">
+    <h3>Quando é</h3>
+    <ul>
+      <li>09, 10, 11, 16, 17, 18, 23 e 24/10/2026</li>
+      <li style="margin-top:4px;">25/10/2026: dia bônus opcional, para os feirantes que quiserem participar</li>
+      <li>Sextas: 16h às 20h</li>
+      <li>Sábados: 14h às 20h</li>
+      <li>Domingos: 12h às 19h</li>
+    </ul>
+  </div>
+  <div class="info-card corner-brace reveal">
+    <h3>Valores</h3>
+    <ul>
+      <li>A inscrição em si é gratuita</li>
+      <li>Taxa cobrada apenas dos aprovados</li>
+      <li>Taxa da Prefeitura: R$ 81,00</li>
+      <li>Taxa da Associação: R$ 450,00</li>
+    </ul>
+    <p style="font-size:12px; color:var(--timber-soft); margin-top:10px; padding-top:10px; border-top:1px dashed #D9C48C;">
+      Devido a fatores climáticos, os dias da feira podem sofrer alterações. A taxa da Prefeitura, uma vez paga, não é passível de devolução em caso de mudança de datas ou cancelamento.
+    </p>
+  </div>
+  <div class="info-card corner-brace reveal">
+    <h3>Dúvidas</h3>
+    <ul>
+      <li>Fale com a organização pelo WhatsApp</li>
+      <li>(47) 99952-0252</li>
+      <li>Respostas em até 2 dias úteis</li>
+      <li>Inscrições exclusivamente por este formulário</li>
+    </ul>
+  </div>
+</div>
+
+<section class="reg-section reveal">
+  <div class="ticket" style="max-width:760px;margin:0 auto;">
+    <div class="ticket-head"><span class="kicker">Regulamento da feira</span><span class="stub">Leia antes de se inscrever</span></div>
+    <div class="ticket-body">
+      <p style="font-size:13.8px;color:var(--timber-soft);margin-bottom:12px;">Ao se inscrever, você concorda com todas as regras abaixo:</p>
+      <ul style="font-size:13.8px;color:var(--timber-soft);padding-left:20px;line-height:1.7;">
+        <li>Não será permitido divisão ou sub-locação da banca com outro feirante.</li>
+        <li>Os produtos a serem vendidos devem estar identificados com preços, visíveis aos consumidores.</li>
+        <li>Produtos à venda com a marca "OKTOBERFEST BLUMENAU" deverão ser produtos licenciados.</li>
+        <li>Os itens que não forem aprovados não poderão ser comercializados na banca.</li>
+        <li>Não serão permitidas vendas nos corredores da feira, apenas dentro das bancas.</li>
+        <li>Os corredores deverão permanecer livres para circulação dos clientes.</li>
+        <li>Não serão permitidos aparelhos de som de uso individual nas bancas (apenas com autorização).</li>
+        <li>As bancas podem ter diferença de tamanho para expor os produtos, devido ao layout do espaço.</li>
+        <li>A divulgação da feira será feita através de mídias locais e demais meios de comunicação possíveis.</li>
+        <li>Quem já é feirante na Feira Livre Municipal precisa estar com os pagamentos da Prefeitura e da Associação em dia para poder participar da Oktoberfest.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="form-section" id="inscricao">
+  <div class="form-heading reveal">
+    <h2>Garanta sua banca</h2>
+    <p>Leva menos de 5 minutos. Ao enviar, você recebe um número de protocolo para acompanhar sua candidatura.</p>
+  </div>
+
+  <form id="inscricaoForm" name="inscricao-oktoberfest" method="POST" data-netlify="true" netlify-honeypot="bot-field" autocomplete="off">
+    <input type="hidden" name="form-name" value="inscricao-oktoberfest">
+    <p style="position:absolute;left:-9999px;" aria-hidden="true">
+      <label>Não preencha isto: <input name="bot-field"></label>
+    </p>
+    <input type="hidden" name="protocolo" id="protocoloHidden">
+
+    <div class="ticket reveal">
+      <div class="ticket-head"><span class="kicker">Dados pessoais</span><span class="stub">§ 1</span></div>
+      <div class="ticket-body">
+        <label>Nome completo<span class="req">*</span></label>
+        <input type="text" id="nome" name="nome" required>
+        <div class="row2">
+          <div>
+            <label>CPF<span class="req">*</span></label>
+            <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" required maxlength="14">
+          </div>
+          <div>
+            <label>Data de nascimento<span class="req">*</span></label>
+            <input type="date" id="nascimento" name="nascimento" required>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ticket reveal">
+      <div class="ticket-head"><span class="kicker">Endereço completo</span><span class="stub">§ 2</span></div>
+      <div class="ticket-body">
+        <label>Rua<span class="req">*</span></label>
+        <input type="text" id="rua" name="rua" required>
+        <div class="row3">
+          <div>
+            <label>Bairro<span class="req">*</span></label>
+            <input type="text" id="bairro" name="bairro" required>
+          </div>
+          <div>
+            <label>Número<span class="req">*</span></label>
+            <input type="text" id="numero" name="numero" required>
+          </div>
+          <div>
+            <label>CEP<span class="req">*</span></label>
+            <input type="text" id="cep" name="cep" placeholder="00000-000" required maxlength="9">
+          </div>
+        </div>
+        <label>Cidade<span class="req">*</span></label>
+        <input type="text" id="cidade" name="cidade" required value="Blumenau">
+      </div>
+    </div>
+
+    <div class="ticket reveal">
+      <div class="ticket-head"><span class="kicker">Produtos e origem</span><span class="stub">§ 3</span></div>
+      <div class="ticket-body">
+        <label>Produtos que pretende comercializar<span class="req">*</span></label>
+        <textarea id="produtos" name="produtos" required placeholder="Descreva todos os itens, ex: cerveja artesanal, salsichão, doces..."></textarea>
+        <label>Você é o produtor dos itens acima?<span class="req">*</span></label>
+        <div class="radio-group" id="produtorGroup">
+          <label class="radio-card" id="cardSim">
+            <input type="radio" name="produtor" value="sim">
+            <span><strong>Sim</strong><br>Eu mesmo produzo todos os produtos que serão vendidos.</span>
+          </label>
+          <label class="radio-card" id="cardNao">
+            <input type="radio" name="produtor" value="nao">
+            <span><strong>Não</strong><br>Adquiro todos os produtos de terceiros.</span>
+          </label>
+          <label class="radio-card" id="cardAmbos">
+            <input type="radio" name="produtor" value="ambos">
+            <span><strong>Uma parte</strong><br>Produzo uma parte e revendo outra parte.</span>
+          </label>
+        </div>
+
+        <div id="mistoFields" style="display:none; margin-top:16px; padding-top:14px; border-top:2px dashed #C2A968;">
+          <label>O que você mesmo produz<span class="req">*</span></label>
+          <textarea id="produtos_proprios" name="produtos_proprios" placeholder="Descreva os itens que você mesmo produz"></textarea>
+          <label>O que é revenda (adquirido de terceiros)<span class="req">*</span></label>
+          <textarea id="produtos_revenda" name="produtos_revenda" placeholder="Descreva os itens que você revende"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="ticket reveal">
+      <div class="ticket-head"><span class="kicker">Equipe da banca</span><span class="stub">§ 4</span></div>
+      <div class="ticket-body">
+        <label>Auxiliar 1 (opcional)</label>
+        <input type="text" id="auxiliar1" name="auxiliar1" placeholder="Nome completo">
+        <label>Auxiliar 2 (opcional)</label>
+        <input type="text" id="auxiliar2" name="auxiliar2" placeholder="Nome completo">
+        <p style="font-size:12px;color:var(--timber-soft);margin-top:6px;">Máximo de 2 pessoas auxiliando na banca, além de você.</p>
+      </div>
+    </div>
+
+    <div class="ticket reveal">
+      <div class="ticket-head"><span class="kicker">Contato e observações</span><span class="stub">§ 5</span></div>
+      <div class="ticket-body">
+        <div class="row2">
+          <div>
+            <label>Telefone (WhatsApp)<span class="req">*</span></label>
+            <input type="tel" id="telefone" name="telefone" placeholder="(47) 90000-0000" required maxlength="15">
+          </div>
+          <div>
+            <label>E-mail<span class="req">*</span></label>
+            <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" required>
+          </div>
+        </div>
+        <label>Data do preenchimento</label>
+        <input type="date" id="dataPreenchimento" name="dataPreenchimento" style="max-width:220px;">
+        <label>Observações</label>
+        <textarea id="observacoes" name="observacoes" placeholder="Alguma informação adicional?"></textarea>
+
+        <div class="check-row">
+          <input type="checkbox" id="declaracao" name="declaracao" required>
+          <label style="margin:0;" for="declaracao">Declaro que as informações acima são verdadeiras, li o regulamento da feira e estou ciente de que esta inscrição será avaliada pela organização — não garantindo automaticamente a banca — e que, em caso de aprovação, as taxas da Prefeitura e da Associação serão devidas.<span class="req">*</span></label>
+        </div>
+
+        <button type="submit" class="submit-btn" id="submitBtn">Enviar inscrição</button>
+        <div class="msg ok" id="msgOk">Prost! Inscrição recebida com sucesso. Você receberá o protocolo de inscrição no e-mail informado. Boa sorte!!!</div>
+        <div class="msg err" id="msgErr">Não foi possível enviar. Verifique os campos obrigatórios e tente novamente.</div>
+      </div>
+    </div>
+  </form>
+</section>
+
+<div class="fachwerk thin"></div>
+<footer>
+  <p>Organização <strong>Feira Livre Oktoberfest</strong> — Blumenau, SC · Dúvidas pelo WhatsApp (47) 99952-0252</p>
+</footer>
+
+<script>
+// scroll reveal
+const revealEls = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+},{threshold:0.12});
+revealEls.forEach(el=>io.observe(el));
+
+// masks
+document.getElementById('cpf').addEventListener('input', e=>{
+  let v = e.target.value.replace(/\D/g,'').slice(0,11);
+  v = v.replace(/(\d{3})(\d)/,'$1.$2').replace(/(\d{3})(\d)/,'$1.$2').replace(/(\d{3})(\d{1,2})$/,'$1-$2');
+  e.target.value = v;
+});
+
+// validação de CPF (dígitos verificadores) — confirma que o número é
+// estruturalmente válido; não confirma que pertence à pessoa.
+function cpfValido(cpf){
+  cpf = cpf.replace(/\D/g,'');
+  if(cpf.length!==11 || /^(\d)\1{10}$/.test(cpf)) return false;
+  let soma=0, resto;
+  for(let i=1;i<=9;i++) soma += parseInt(cpf.substring(i-1,i))*(11-i);
+  resto = (soma*10)%11;
+  if(resto===10||resto===11) resto=0;
+  if(resto!==parseInt(cpf.substring(9,10))) return false;
+  soma=0;
+  for(let i=1;i<=10;i++) soma += parseInt(cpf.substring(i-1,i))*(12-i);
+  resto = (soma*10)%11;
+  if(resto===10||resto===11) resto=0;
+  if(resto!==parseInt(cpf.substring(10,11))) return false;
+  return true;
+}
+const cpfInput = document.getElementById('cpf');
+const cpfMsg = document.createElement('p');
+cpfMsg.style.cssText = 'font-size:12px;margin-top:4px;display:none;';
+cpfInput.insertAdjacentElement('afterend', cpfMsg);
+cpfInput.addEventListener('blur', ()=>{
+  const digits = cpfInput.value.replace(/\D/g,'');
+  if(digits.length===0){ cpfMsg.style.display='none'; cpfInput.setCustomValidity(''); return; }
+  if(cpfValido(cpfInput.value)){
+    cpfMsg.style.display='none';
+    cpfInput.style.borderColor = 'var(--hop)';
+    cpfInput.setCustomValidity('');
+  }else{
+    cpfMsg.textContent = 'CPF inválido — confira os números digitados.';
+    cpfMsg.style.color = 'var(--geranium)';
+    cpfMsg.style.display='block';
+    cpfInput.style.borderColor = 'var(--geranium)';
+    cpfInput.setCustomValidity('CPF inválido');
+  }
+});
+cpfInput.addEventListener('input', ()=>{ cpfInput.setCustomValidity(''); cpfMsg.style.display='none'; cpfInput.style.borderColor=''; });
+
+// CEP: máscara + busca automática de endereço (ViaCEP)
+const cepInput = document.getElementById('cep');
+const cepMsg = document.createElement('p');
+cepMsg.style.cssText = 'font-size:12px;margin-top:4px;color:var(--timber-soft);display:none;';
+cepInput.insertAdjacentElement('afterend', cepMsg);
+
+cepInput.addEventListener('input', e=>{
+  let v = e.target.value.replace(/\D/g,'').slice(0,8);
+  v = v.replace(/(\d{5})(\d)/,'$1-$2');
+  e.target.value = v;
+});
+cepInput.addEventListener('blur', async ()=>{
+  const digits = cepInput.value.replace(/\D/g,'');
+  if(digits.length!==8) return;
+  cepMsg.textContent = 'Buscando endereço...';
+  cepMsg.style.display='block';
+  try{
+    const res = await fetch('https://viacep.com.br/ws/' + digits + '/json/');
+    const data = await res.json();
+    if(data.erro){
+      cepMsg.textContent = 'CEP não encontrado — preencha o endereço manualmente.';
+      return;
+    }
+    if(data.logradouro) document.getElementById('rua').value = data.logradouro;
+    if(data.bairro) document.getElementById('bairro').value = data.bairro;
+    if(data.localidade) document.getElementById('cidade').value = data.localidade;
+    cepMsg.textContent = 'Endereço preenchido automaticamente — confira se está correto.';
+  }catch(err){
+    cepMsg.textContent = 'Não foi possível buscar o endereço automaticamente — preencha manualmente.';
+  }
+});
+
+document.getElementById('telefone').addEventListener('input', e=>{
+  let v = e.target.value.replace(/\D/g,'').slice(0,11);
+  if(v.length>10){ v = v.replace(/(\d{2})(\d{5})(\d{4})/,'($1) $2-$3'); }
+  else { v = v.replace(/(\d{2})(\d{4})(\d{0,4})/,'($1) $2-$3'); }
+  e.target.value = v;
+});
+
+// radio card highlight
+document.querySelectorAll('#produtorGroup input[type=radio]').forEach(r=>{
+  r.addEventListener('change', ()=>{
+    document.getElementById('cardSim').classList.toggle('checked', document.querySelector('input[value=sim]').checked);
+    document.getElementById('cardNao').classList.toggle('checked', document.querySelector('input[value=nao]').checked);
+    document.getElementById('cardAmbos').classList.toggle('checked', document.querySelector('input[value=ambos]').checked);
+    const mistoOn = document.querySelector('input[value=ambos]').checked;
+    const mistoFields = document.getElementById('mistoFields');
+    mistoFields.style.display = mistoOn ? 'block' : 'none';
+    document.getElementById('produtos_proprios').required = mistoOn;
+    document.getElementById('produtos_revenda').required = mistoOn;
+  });
+});
+
+document.getElementById('dataPreenchimento').valueAsDate = new Date();
+
+function genProtocol(){
+  const d = new Date();
+  const stamp = d.getFullYear().toString().slice(2) + String(d.getMonth()+1).padStart(2,'0') + String(d.getDate()).padStart(2,'0');
+  const rand = Math.random().toString(36).slice(2,6).toUpperCase();
+  return 'OKT-' + stamp + '-' + rand;
+}
+
+function encodeForm(form){
+  return new URLSearchParams(new FormData(form)).toString();
+}
+
+document.getElementById('inscricaoForm').addEventListener('submit', async (e)=>{
+  e.preventDefault();
+  const form = e.target;
+  const okMsg = document.getElementById('msgOk');
+  const errMsg = document.getElementById('msgErr');
+  okMsg.style.display='none'; errMsg.style.display='none';
+
+  const produtorEl = document.querySelector('input[name=produtor]:checked');
+  if(!produtorEl){
+    errMsg.textContent = 'Selecione se você é produtor, revende ou faz as duas coisas.';
+    errMsg.style.display='block';
+    return;
+  }
+  if(produtorEl.value==='ambos'){
+    const proprios = document.getElementById('produtos_proprios').value.trim();
+    const revenda = document.getElementById('produtos_revenda').value.trim();
+    if(!proprios || !revenda){
+      errMsg.textContent = 'Descreva o que você produz e o que é revenda nos dois campos indicados.';
+      errMsg.style.display='block';
+      return;
+    }
+  }
+  if(!cpfValido(document.getElementById('cpf').value)){
+    errMsg.textContent = 'CPF inválido — confira os números digitados antes de enviar.';
+    errMsg.style.display='block';
+    document.getElementById('cpf').focus();
+    return;
+  }
+
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true; btn.textContent = 'Enviando...';
+
+  const protocolo = genProtocol();
+  document.getElementById('protocoloHidden').value = protocolo;
+
+  try{
+    const response = await fetch(window.location.pathname || '/', {
+      method:'POST',
+      headers:{'Content-Type':'application/x-www-form-urlencoded'},
+      body: encodeForm(form)
+    });
+    if(!response.ok) throw new Error('HTTP ' + response.status);
+
+    okMsg.style.display='block';
+    form.reset();
+    document.getElementById('cidade').value = 'Blumenau';
+    document.getElementById('dataPreenchimento').valueAsDate = new Date();
+    document.getElementById('cardSim').classList.remove('checked');
+    document.getElementById('cardNao').classList.remove('checked');
+    document.getElementById('cardAmbos').classList.remove('checked');
+    document.getElementById('mistoFields').style.display = 'none';
+    document.getElementById('produtos_proprios').required = false;
+    document.getElementById('produtos_revenda').required = false;
+  }catch(err){
+    console.error(err);
+    errMsg.textContent = 'Não foi possível enviar. Detalhe técnico: ' + (err && err.message ? err.message : err) + '. Se esta página ainda não foi publicada no Netlify, o envio só funciona depois de publicada.';
+    errMsg.style.display='block';
+  }finally{
+    btn.disabled=false; btn.textContent='Enviar inscrição';
+  }
+});
+</script>
+</body>
+</html>
